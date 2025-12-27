@@ -74,10 +74,10 @@ export async function POST(request: NextRequest) {
     }
 
     // Generera ZIP-fil
-    const zipBuffer = await zip.generateAsync({ type: 'uint8array' });
+    const zipBlob = await zip.generateAsync({ type: 'blob' });
 
     // Returnera ZIP-fil
-    return new NextResponse(zipBuffer, {
+    return new NextResponse(zipBlob, {
       headers: {
         'Content-Type': 'application/zip',
         'Content-Disposition': `attachment; filename="${sanitizeFileName(patternData.title)}_alla-språk.zip"`,
