@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Generera ZIP-fil
-    const zipBuffer = await zip.generateAsync({ type: 'nodebuffer' });
+    const zipBuffer = await zip.generateAsync({ type: 'uint8array' });
 
     // Returnera ZIP-fil
     return new NextResponse(zipBuffer, {
